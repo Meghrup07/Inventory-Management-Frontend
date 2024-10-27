@@ -1,0 +1,64 @@
+<div class="add-form mt-5">
+    <div class="container">
+        <div class="card p-4">
+            <div class="title-wrap">
+                <div class="text-center">
+                    <h2>Customer Edit</h2>
+                </div>
+            </div>
+            <form [formGroup]="updateForm">
+                <div class="mb-3">
+                    <label class="form-label">Customer Name</label>
+                    <input [class.is-invalid]="updateForm.get('name')?.errors && updateForm.get('name')?.touched"
+                        type="text" class="form-control" formControlName="name">
+                    <div *ngIf="updateForm.get('name')?.errors && updateForm.get('name')?.touched"
+                        class="invalid-feedback">
+                        Name is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Customer Email</label>
+                    <input [class.is-invalid]="updateForm.get('email')?.errors && updateForm.get('email')?.touched"
+                        type="email" class="form-control" formControlName="email">
+                    <div *ngIf="updateForm.get('email')?.errors && updateForm.get('email')?.touched"
+                        class="invalid-feedback">
+                        Email is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Customer Phone</label>
+                    <input class="form-control" formControlName="phone">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Customer Address</label>
+                    <input class="form-control" formControlName="address">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Customer State</label>
+                    <select class="form-select" formControlName="state">
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                    </select>
+                    <div *ngIf="updateForm.get('state')?.errors && updateForm.get('state')?.touched"
+                        class="invalid-feedback">
+                        State is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Customer City</label>
+                    <select class="form-select" formControlName="city">
+                        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                    </select>
+                    <div *ngIf="updateForm.get('city')?.errors && updateForm.get('city')?.touched"
+                        class="invalid-feedback">
+                        City is required
+                    </div>
+                </div>
+                <div class="text-center mt-2">
+                    <button type="submit" (click)="updateCustomer()" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-primary ms-2" (click)="backToList()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
