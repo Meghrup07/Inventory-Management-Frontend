@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: angular-app
-          path: ./dist/frontend/  # Ensure this matches the output path in angular.json
+          path: ./dist/frontend/browser  # Ensure this matches the output path in angular.json
 
   deploy:
     runs-on: ubuntu-latest
@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'inventory-management-frontend'
           slot-name: 'Production'
-          package: ./dist/frontend/  # Ensure this path matches your build output
+          package: ./dist/frontend/browser  # Ensure this path matches your build output
